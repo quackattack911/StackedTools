@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
+import 'package:stackedtools/ui/common/ui_helpers.dart';
 
 import 'pretty_xml_viewmodel.dart';
 import 'pretty_xml_view.form.dart';
@@ -23,7 +24,7 @@ class PrettyXmlView extends StackedView<PrettyXmlViewModel>
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
+          Flexible(
             child: TextField(
               controller: prettyXmlController,
               maxLines: null,
@@ -36,6 +37,8 @@ class PrettyXmlView extends StackedView<PrettyXmlViewModel>
               ),
             ),
           ),
+          verticalSpaceLarge,
+          SelectableText(viewModel.prettyXml)
         ],
       ),
     );
