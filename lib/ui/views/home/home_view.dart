@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stackedtools/ui/views/json_to_csv/json_to_csv_view.dart';
 import 'package:stackedtools/ui/views/pretty_json/pretty_json_view.dart';
 import 'package:stackedtools/ui/views/pretty_xml/pretty_xml_view.dart';
 
@@ -33,16 +34,23 @@ class HomeView extends StackedView<HomeViewModel> {
               child: Text('Tools'),
             ),
             ListTile(
-              title: const Text('Pretty JSON'),
+              title: Text(viewList[0]),
               onTap: () {
                 viewModel.setIndex(0);
                 Navigator.pop(context);
               },
             ),
             ListTile(
-              title: const Text('Pretty XML'),
+              title: Text(viewList[1]),
               onTap: () {
                 viewModel.setIndex(1);
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text(viewList[2]),
+              onTap: () {
+                viewModel.setIndex(2);
                 Navigator.pop(context);
               },
             ),
@@ -52,31 +60,37 @@ class HomeView extends StackedView<HomeViewModel> {
     );
   }
 
-  Widget getViewForIndex(int index) {
-    switch (index) {
-      case 0:
-        return const PrettyJsonView();
-      case 1:
-        return const PrettyXmlView();
-      default:
-        return const PrettyJsonView();
-    }
-  }
-
-  String getToolName(int index) {
-    switch (index) {
-      case 0:
-        return 'Make JSON Pretty';
-      case 1:
-        return 'Make XML Pretty';
-      default:
-        return 'Make JSON Pretty';
-    }
-  }
-
   @override
   HomeViewModel viewModelBuilder(
     BuildContext context,
   ) =>
       HomeViewModel();
+}
+
+Widget getViewForIndex(int index) {
+  switch (index) {
+    case 0:
+      return const PrettyJsonView();
+    case 1:
+      return const PrettyXmlView();
+    case 2:
+      return const JsonToCsvView();
+    default:
+      return const PrettyJsonView();
+  }
+}
+
+var viewList = ['Pretty JSON', 'Pretty XML', 'JSON to CSV'];
+
+String getToolName(int index) {
+  switch (index) {
+    case 0:
+      return viewList[0];
+    case 1:
+      return viewList[1];
+    case 2:
+      return viewList[2];
+    default:
+      return viewList[0];
+  }
 }

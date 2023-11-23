@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stackedtools/ui/common/ui_helpers.dart';
+import 'package:stackedtools/ui/views/json_to_csv/json_to_csv_view.form.dart';
 
-import 'pretty_json_viewmodel.dart';
-import 'pretty_json_view.form.dart';
+import 'json_to_csv_viewmodel.dart';
 
 @FormView(fields: [
-  FormTextField(name: 'prettyJson'),
+  FormTextField(name: 'jsonToCsv'),
 ])
-class PrettyJsonView extends StackedView<PrettyJsonViewModel>
-    with $PrettyJsonView {
-  const PrettyJsonView({Key? key}) : super(key: key);
+class JsonToCsvView extends StackedView<JsonToCsvViewModel>
+    with $JsonToCsvView {
+  const JsonToCsvView({Key? key}) : super(key: key);
 
   @override
   Widget builder(
     BuildContext context,
-    PrettyJsonViewModel viewModel,
+    JsonToCsvViewModel viewModel,
     Widget? child,
   ) {
     return Padding(
@@ -26,7 +26,7 @@ class PrettyJsonView extends StackedView<PrettyJsonViewModel>
         children: [
           Flexible(
             child: TextField(
-              controller: prettyJsonController,
+              controller: jsonToCsvController,
               maxLines: null,
               autofocus: true,
               autocorrect: false,
@@ -37,21 +37,16 @@ class PrettyJsonView extends StackedView<PrettyJsonViewModel>
               ),
             ),
           ),
-          verticalSpaceMedium,
-          SelectableText(viewModel.prettyJson),
+          verticalSpaceLarge,
+          // SelectableText(viewModel),
         ],
       ),
     );
   }
 
   @override
-  PrettyJsonViewModel viewModelBuilder(
+  JsonToCsvViewModel viewModelBuilder(
     BuildContext context,
   ) =>
-      PrettyJsonViewModel();
-
-  @override
-  void onViewModelReady(PrettyJsonViewModel viewModel) {
-    syncFormWithViewModel(viewModel);
-  }
+      JsonToCsvViewModel();
 }
