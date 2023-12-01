@@ -38,7 +38,19 @@ class PrettyJsonView extends StackedView<PrettyJsonViewModel>
             ),
           ),
           verticalSpaceMedium,
-          SelectableText(viewModel.prettyJson),
+          Expanded(
+            child: LayoutBuilder(builder: (context, constraints) {
+              return SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: SizedBox(
+                  width: constraints.biggest.width,
+                  child: SelectableText(
+                    viewModel.prettyJson,
+                  ),
+                ),
+              );
+            }),
+          )
         ],
       ),
     );

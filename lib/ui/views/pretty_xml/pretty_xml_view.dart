@@ -37,8 +37,19 @@ class PrettyXmlView extends StackedView<PrettyXmlViewModel>
               ),
             ),
           ),
-          verticalSpaceLarge,
-          SelectableText(viewModel.prettyXml)
+          verticalSpaceMedium,
+          Expanded(
+            child: LayoutBuilder(builder: (context, constraints) {
+              return SingleChildScrollView(
+                child: SizedBox(
+                  width: constraints.biggest.width,
+                  child: SelectableText(
+                    viewModel.prettyXml,
+                  ),
+                ),
+              );
+            }),
+          )
         ],
       ),
     );
