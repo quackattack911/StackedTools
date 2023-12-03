@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stackedtools/ui/views/json_to_csv/json_to_csv_view.dart';
 import 'package:stackedtools/ui/views/pretty_json/pretty_json_view.dart';
 import 'package:stackedtools/ui/views/pretty_xml/pretty_xml_view.dart';
 
@@ -47,13 +46,6 @@ class HomeView extends StackedView<HomeViewModel> {
                 Navigator.pop(context);
               },
             ),
-            ListTile(
-              title: Text(viewList[2]),
-              onTap: () {
-                viewModel.setIndex(2);
-                Navigator.pop(context);
-              },
-            ),
           ],
         ),
       ),
@@ -73,14 +65,12 @@ Widget getViewForIndex(int index) {
       return const PrettyJsonView();
     case 1:
       return const PrettyXmlView();
-    case 2:
-      return const JsonToCsvView();
     default:
       return const PrettyJsonView();
   }
 }
 
-var viewList = ['Pretty JSON', 'Pretty XML', 'JSON to CSV'];
+var viewList = ['Pretty JSON', 'Pretty XML'];
 
 String getToolName(int index) {
   switch (index) {
@@ -88,8 +78,6 @@ String getToolName(int index) {
       return viewList[0];
     case 1:
       return viewList[1];
-    case 2:
-      return viewList[2];
     default:
       return viewList[0];
   }

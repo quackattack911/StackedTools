@@ -6,7 +6,6 @@ import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:stackedtools/ui/views/pretty_json/pretty_json_view.dart';
 import 'package:stackedtools/ui/views/pretty_xml/pretty_xml_view.dart';
-import 'package:stackedtools/ui/views/json_to_csv/json_to_csv_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -15,7 +14,6 @@ import 'package:stackedtools/ui/views/json_to_csv/json_to_csv_view.dart';
     MaterialRoute(page: StartupView),
     MaterialRoute(page: PrettyJsonView),
     MaterialRoute(page: PrettyXmlView),
-    MaterialRoute(page: JsonToCsvView),
 // @stacked-route
   ],
   dependencies: [
